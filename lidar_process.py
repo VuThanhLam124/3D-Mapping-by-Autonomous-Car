@@ -21,12 +21,13 @@ def get_data():
         print('Lidar disconnected')
         
 # Hàm tính toán tọa độ x và y với mỗi angle và distance thu được từ lidar
-def compute(angle, distance):
+def coordinates(angle, distance):
     angle = np.deg2rad(angle)
     x = np.sin(angle)*distance
     y = np.cos(angle)*distance
     return x,y
-xy=[compute(angle,distance) for angle,distance in data]
+    
+xy=[coordinates(angle,distance) for angle,distance in data]
 
 #Chạy hàm thu dữ liệu
 get_data()
