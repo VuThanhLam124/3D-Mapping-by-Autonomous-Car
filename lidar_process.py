@@ -1,11 +1,7 @@
 #Import thư viện cần sử dụng
 from rplidar import RPLidar
-import time
-import matplotlib.pyplot as plt
-from mpl_toolkits.mplot3d import Axes3D
-import numpy as np
 
-# Khởi tạo lidar
+# Khởi tạo lidar và list chứa data nhận vào từ lidar
 lidar = RPLidar('COM5',timeout=3,baudrate=115200)
 data = []
 # Hàm lấy dữ liệu từ lidar
@@ -23,8 +19,8 @@ def get_data():
         lidar.disconnect()
         print('Lidar disconnected')
         print('Data length:',len(data))
-        
-# Hàm vẽ đồ thị 3D(cái này từ từ làm, do phải đi cùng camera)
+
+#Chạy hàm thu dữ liệu
 get_data()
 
 
