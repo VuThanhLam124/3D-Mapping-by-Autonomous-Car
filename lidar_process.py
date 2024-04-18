@@ -26,8 +26,6 @@ def coordinates(angle, distance):
     x = np.sin(angle)*distance
     y = np.cos(angle)*distance
     return x,y
-    
-xy=[coordinates(angle,distance) for angle,distance in data]
 
 #Chạy hàm thu dữ liệu
 get_data()
