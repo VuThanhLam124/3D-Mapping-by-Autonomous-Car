@@ -1,6 +1,6 @@
 #Import thư viện cần sử dụng
 from rplidar import RPLidar
-
+import numpy as np
 # Khởi tạo lidar và list chứa data nhận vào từ lidar
 lidar = RPLidar('COM5',timeout=3,baudrate=115200)
 data = []
@@ -18,8 +18,12 @@ def get_data():
         lidar.stop_motor()
         lidar.disconnect()
         print('Lidar disconnected')
-        print('Data length:',len(data))
-
+def compute(angle, distance):
+    angle = np.deg2rad(angle)
+    x = np.sin(angle)*distance
+    y = np.cos(angle)*distance
+    return x,y
+xy=[compute(angle,distance) for angle,distance in data]
 #Chạy hàm thu dữ liệu
 get_data()
 
